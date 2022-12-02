@@ -1,0 +1,5 @@
+csv/commits/*
+csv/offsets/*
+csv/sources/*
+csv/metadata
+csv/.ipynb_checkpoints/*
