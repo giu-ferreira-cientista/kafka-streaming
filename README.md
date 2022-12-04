@@ -10,9 +10,11 @@ Kafka:
 
 Spark:
 
-    - Referencia docker compose Jupyter + Spark Jovyan
-    - Execucao Scripts Jupyter
+    - Referencia docker compose Jupyter + All Spark - https://hub.docker.io
 
+    - docker exec -t spark bash -c 'chmod -R 777 *'
+
+    - Execucao Scripts Jupyter
 
 Pinot:
 
@@ -20,14 +22,27 @@ Pinot:
 
     - Connect to Kafka Table
 
+    - docker exec -it pinot-controller bin/pinot-admin.sh AddTable \
+            -schemaFile examples/addtable/patient_schema.json \
+            -tableConfigFile examples/addtable/patient_realtime_table_config.json \
+            -exec
+
 Superset:
 
-    - Github fork
     - https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+
+    - Github fork
+
+    - pip install pinotdb
 
     - Connect to Pinot Realtime Table
 
+    - docker exec \
+        -t superset_app \
+        bash -c 'superset import-dashboards -p /superset/import/dashboard_pinot_superset_add_historico.zip'
 
 Docker network:    
+
     - docker network create 
-    - docker network connect ...
+
+    - docker network connect all containers

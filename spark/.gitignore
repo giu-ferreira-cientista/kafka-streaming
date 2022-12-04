@@ -2,4 +2,7 @@ csv/commits/*
 csv/offsets/*
 csv/sources/*
 csv/metadata
-csv/.ipynb_checkpoints/*
+json/commits/*
+json/offsets/*
+json/sources/*
+json/metadata
