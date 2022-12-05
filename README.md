@@ -16,6 +16,8 @@ Spark:
 
     - Execucao Scripts Jupyter
 
+    - 
+
 Pinot:
 
     - https://docs.pinot.apache.org/basics/getting-started/running-pinot-in-docker
