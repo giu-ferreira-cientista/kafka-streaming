@@ -20,3 +20,4 @@ services:
       - ./json:/home/jovyan/work/json
       - ./secrets:/home/jovyan/work/secrets
       - ./app:/home/jovyan/work/app
+      - ./api:/home/jovyan/work/api
