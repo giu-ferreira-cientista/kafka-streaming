@@ -6,3 +6,4 @@ json/commits/*
 json/offsets/*
 json/sources/*
 json/metadata
+json/checkpoint/*
