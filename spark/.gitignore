@@ -7,3 +7,4 @@ json/offsets/*
 json/sources/*
 json/metadata
 json/checkpoint/*
+json/predict_diabetes/*
