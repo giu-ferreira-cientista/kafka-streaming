@@ -72,7 +72,7 @@ def execute_json_producer():
 
     print("Executing Command...")
     
-    cmd = 'python /home/jovyan/work/app/json-producer-loop.py'
+    cmd = 'spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:2.4.5,io.delta:delta-core_2.12:0.7.0 --master local[*] --driver-memory 4g --executor-memory 4g /home/jovyan/work/app/json-producer.py'
 
     p = Popen(['watch', cmd]) # something long running
     
