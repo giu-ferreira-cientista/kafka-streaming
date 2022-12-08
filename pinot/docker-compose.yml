@@ -3,6 +3,7 @@ services:
   pinot-zookeeper:
     image: zookeeper:3.5.6
     container_name: pinot-zookeeper
+    restart: unless-stopped
     ports:
       - "2181:2181"
     environment:

@@ -3,6 +3,7 @@ services:
   spark:
     image: jupyter/all-spark-notebook:spark-3.1.1
     container_name: spark
+    restart: unless-stopped
     ports:
       - "5500:5000"
       - "8888:8888"    
