@@ -20,7 +20,7 @@ cd ..
 
 cd superset
 
-docker-compose up -d
+docker-compose -f docker-compose-non-dev.yml up -d
 
 cd ..
 
@@ -41,6 +41,10 @@ docker network connect data-streaming pinot-server
 docker network connect data-streaming kafka
 docker network connect data-streaming zookeeper
 docker network connect data-streaming kafka-ui
+docker network connect data-streaming superset_app
+docker network connect data-streaming airflow-airflow-webserver-1
+docker network connect data-streaming airflow-airflow-scheduler-1
+docker network connect data-streaming airflow-airflow-triggerer-1
 
 
 docker exec -t pinot-controller bin/pinot-admin.sh AddTable \
@@ -48,5 +52,13 @@ docker exec -t pinot-controller bin/pinot-admin.sh AddTable \
     -tableConfigFile examples/addtable/patient_realtime_table_config.json \
     -exec
 
+docker exec -t superset_app pip install pinotdb==0.3.9 && \ 
+    bash -c 'superset import-dashboards -p /superset/dashboard_pinot_superset_add_exercicio.zip'
+
 docker exec -t spark bash -c 'chmod -R 777 *'
 
+docker exec -t spark pip install flask flask-cors kafka-python sseclient pyspark nltk pycaret
+
+docker exec -t spark pip install --upgrade pandas==1.3.4
+
+docker exec -t spark python /home/jovyan/work/api/app.py
