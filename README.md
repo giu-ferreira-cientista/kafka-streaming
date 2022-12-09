@@ -29,8 +29,8 @@ Pinot:
             -tableConfigFile examples/addtable/patient_realtime_table_config.json \
             -exec
             
-    - docker exec -it pinot-controller bin/pinot-admin.sh AddTable \
-    - bin/pinot-admin.sh ChangeTableState -tableName patients -state drop -controllerHost pinot-controller -controllerPort 9000
+    - docker exec -it pinot-controller bin/pinot-admin.sh ChangeTableState -tableName patients -state drop -controllerHost pinot-controller -controllerPort 9000
+
     Superset:
 
     - https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
