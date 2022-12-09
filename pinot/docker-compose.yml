@@ -64,4 +64,5 @@ networks:
         - subnet: 172.10.0.0/16
           #docker-compose v3+ do not use ip_range
           ip_range: 172.18.5.0/24
-    external: true
+    driver: bridge
+    

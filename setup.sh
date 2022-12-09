@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cd pinot
+
+docker-compose up -d
+
+cd ..
+
 cd kafka
 
 docker-compose up -d
@@ -7,12 +13,6 @@ docker-compose up -d
 cd ..
 
 cd spark
-
-docker-compose up -d  
-
-cd ..
-
-cd pinot
 
 docker-compose up -d  
 
@@ -31,20 +31,18 @@ docker-compose up -d
 
 cd ..
 
-
-docker network create data-streaming
-docker network connect data-streaming spark
-docker network connect data-streaming pinot-controller
-docker network connect data-streaming pinot-zookeeper
-docker network connect data-streaming pinot-broker
-docker network connect data-streaming pinot-server
-docker network connect data-streaming kafka
-docker network connect data-streaming zookeeper
-docker network connect data-streaming kafka-ui
-docker network connect data-streaming superset_app
-docker network connect data-streaming airflow-airflow-webserver-1
-docker network connect data-streaming airflow-airflow-scheduler-1
-docker network connect data-streaming airflow-airflow-triggerer-1
+docker network connect static-network spark
+docker network connect static-network pinot-controller
+docker network connect static-network pinot-zookeeper
+docker network connect static-network pinot-broker
+docker network connect static-network pinot-server
+docker network connect static-network kafka
+docker network connect static-network zookeeper
+docker network connect static-network kafka-ui
+docker network connect static-network superset_app
+docker network connect static-network airflow-airflow-webserver-1
+docker network connect static-network airflow-airflow-scheduler-1
+docker network connect static-network airflow-airflow-triggerer-1
 
 
 docker exec -t pinot-controller bin/pinot-admin.sh AddTable \
