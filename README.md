@@ -10,7 +10,7 @@ Kafka:
 
 Spark:
 
-    - Referencia docker compose Jupyter + All Spark - https://hub.docker.io
+    - https://hub.docker.io - Referencia docker compose Jupyter + All Spark
 
     - docker exec -t spark bash -c 'chmod -R 777 *'
 
